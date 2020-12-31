@@ -1,0 +1,63 @@
+*{
+    margin: 0;               /*Son propiedades que se aplican a todo el documento para eliminar*/
+    padding: 0;              /*margenes, bordes y padding que las páginas por defecto tienen*/
+    box-sizing: border-box;
+}
+body{
+    background: #252525;
+}
+.box{
+    width: 120px;
+    height: 60px;
+    border: 2px solid #898383;
+    border-radius: 50px;
+    position: absolute;
+    top: 50%; /*Posicionan el div casi en el centro de la pagina, pero junto a transform sí se */ 
+    left: 50%; /* posiciona justo en el centro de la página */
+    transform: translate(-50%,-50%);
+}
+input{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    outline: none;
+    -webkit-appearance: none; /*Propiedad que hace desaparecer el type="textbox*/
+}
+.circle{
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 48%;
+    height: 52px;
+    background:#898383;
+    border-radius: 50px;
+    z-index: -1;
+    transition: all .5s;
+}
+.circle::before{
+    content: ''; /*Reemplaza contenido del html por comillas vacías para luego agregarle color*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 10px;
+    height: 10px;
+    background: #898383;
+    border-radius: 50px;
+    transition: all .40s;
+}
+input:checked ~ .circle{ /*Es importante el ~ */
+    transform: translateX(100%); /*Propiedad que hace mover el input cuando esta ya checked en un 100% de un lado a otro en el eje X*/
+}
+input:checked ~ .circle::before{ /*Después de hacer el click en el input, este es checked y este cambia de color*/
+    background: #ffff00;
+    box-shadow: 0 0 50px 3px #ffff00;
+}
+
+.title{
+    top: 50%;
+    left: 50%;
+    transform: translate(40%,50%);
+    color: whitesmoke;
+}
